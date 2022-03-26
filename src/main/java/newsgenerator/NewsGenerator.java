@@ -8,7 +8,7 @@ import java.util.Random;
 
 public class NewsGenerator {
 
-    private final static String[] NEWS_TOPIC = {"java", "python", "basic", "C++"};
+    private final static String[] NEWS_TOPIC = {"java", "python", "php", "C++"};
     private final static String EXCHANGE_NAME = "topic_exchange";
 
     public static void main(String[] args) throws Exception {
