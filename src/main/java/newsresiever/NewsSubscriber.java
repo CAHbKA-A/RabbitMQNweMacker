@@ -15,13 +15,14 @@ public class NewsSubscriber {
         channel.exchangeDeclare(EXCHANGE_NAME, BuiltinExchangeType.TOPIC);
         String queueName = channel.queueDeclare().getQueue();
 
-        String routingKey = "basic";
+        String routingKey = "php";
         channel.queueBind(queueName, EXCHANGE_NAME, routingKey);
         System.out.println(" You subscribed to news about " + routingKey );
 
         DeliverCallback deliverCallback = (consumerTag, delivery) -> {
             String message = new String(delivery.getBody(), "UTF-8");
-            System.out.println(delivery.getEnvelope().getRoutingKey() + ":" + message);
+
+            System.out.println( "One post about "+delivery.getEnvelope().getRoutingKey() + ":" + message+"'");
 
         };
         channel.basicConsume(queueName, true, deliverCallback, consumerTag -> {
